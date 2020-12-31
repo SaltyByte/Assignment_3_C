@@ -82,7 +82,7 @@ int similar(char *large, char *small, int n) {
     int counter = 0;
     int i = 0;
     int j = 0;
-    // Loop over the word in the text, see if we can change the word in the text n or less time to get the search word
+    // Loop over the word in the text and the search word, see if we can change the word in the text n or less time to get the search word
     while (i < strlen(large) && j < strlen(small)) {
         if (large[i] != small[j]) {
             counter++;
@@ -92,9 +92,14 @@ int similar(char *large, char *small, int n) {
             i++;
             j++;
         }
+        // If text word is not finished, loop over and finish it
+        while (j == strlen(small) && i < strlen(large)){
+            counter++;
+            i++;
+        }
     }
     // If we need to change only n times the word in the text and we reach to the end of the search word, return 1
-    if (counter <= n && (i + 1) == strlen(small)) {
+    if (counter <= n && j == strlen(small)) {
         return 1;
     }
     return 0;
