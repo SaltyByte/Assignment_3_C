@@ -7,9 +7,9 @@ CFLAGS = -Wall
 all: isort txtfind
 
 txtfind: txtfind.c
-	$(CC) $(CFLAGS) txtfind.c -o txtfind.o
+	$(CC) $(CFLAGS) txtfind.c -o txtfind
 isort: isort.c
-	$(CC) $(CFLAGS)  isort.c -o isort.o
+	$(CC) $(CFLAGS)  isort.c -o isort
 
 .PHONY: clean all
 
